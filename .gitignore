@@ -31,3 +31,4 @@ coverage
 *.envbox
 __pycache__
 package-lock.json
+db.sqlite3
