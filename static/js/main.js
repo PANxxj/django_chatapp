@@ -34,7 +34,8 @@ function getCookie(name){
     return cookieValue
 }
 
-function joinChat(){
+async function joinChat(){
+    console.log('join caht');
     
     chatName=chatNameElement.value
     const data= new FormData()
@@ -42,7 +43,7 @@ function joinChat(){
     data.append('url',chatWindow)
     data.append('url',chatWindow)
 
-    fetch(`create-room/${chatRoomUuid}`,{
+    await fetch(`create-room/${chatRoomUuid}`,{
         method:"POST",
         headers:{
             'X-CSRFToken':getCookie('csrftoken')
@@ -53,8 +54,21 @@ function joinChat(){
         return res.json()
     })
     .then(function(data){
+        console.log('data');
         console.log('data',data);
     })
+    chatSocket = new WebSocket(`ws://${window.location.host}/ws/${chatRoomUuid}/`)
+    console.log('chatsocket',chatSocket);
+
+    chatSocket.onmessage=function(e){
+        console.log('onmessage');
+    }
+    chatSocket.onopen=function(e){
+        console.log('open -chat socket was open');
+    }
+    chatSocket.onclose=function(e){
+        console.log('onclose- chat socket was closed');
+    }
 }
 
 

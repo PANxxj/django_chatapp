@@ -26,7 +26,7 @@ class Room(models.Model):
     agent=models.ForeignKey(CustomUser,related_name='room',blank=True,null=True,on_delete=models.SET_NULL)
     message=models.ManyToManyField(Message,blank=True)
     url=models.CharField(max_length=255,blank=True,null=True)
-    status=models.CharField(max_length=255,blank=True,null=True)
+    status=models.CharField(max_length=255,blank=True,null=True,choices=STATUS_CHOICE,)
     created_at=models.DateTimeField(auto_now_add=True)
     # created_by=models.ForeignKey(CustomUser,blank=True,on_delete=models.SET_NULL,null=True)
 
