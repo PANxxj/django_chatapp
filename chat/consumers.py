@@ -25,6 +25,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         print(text_data)
         # Recieve message from websocket (front end)
         text_data_json=json.loads(text_data)
+        print(text_data_json)
         type=text_data_json['type']
         message=text_data_json['message']
         name=text_data_json['name']

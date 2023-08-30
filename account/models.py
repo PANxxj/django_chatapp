@@ -18,21 +18,21 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
     is_superuser=models.BooleanField(default=False)
     date_joined=models.DateField(default=timezone.now)
     last_login=models.DateTimeField(blank=True,null=True)
-    groups = models.ManyToManyField(
-        Group,
-        verbose_name='groups',
-        blank=True,
-        help_text='The groups this user belongs to.',
-        related_name='customuser_set'  # Change this related_name
-    )
+    # groups = models.ManyToManyField(
+    #     Group,
+    #     verbose_name='groups',
+    #     blank=True,
+    #     help_text='The groups this user belongs to.',
+    #     related_name='customuser_set'  # Change this related_name
+    # )
 
-    user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name='user permissions',
-        blank=True,
-        help_text='Specific permissions for this user.',
-        related_name='customuser_set'  # Change this related_name
-    )
+    # user_permissions = models.ManyToManyField(
+    #     Permission,
+    #     verbose_name='user permissions',
+    #     blank=True,
+    #     help_text='Specific permissions for this user.',
+    #     related_name='customuser_set'  # Change this related_name
+    # )
 
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'

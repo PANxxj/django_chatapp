@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl">chat admin</h1>
+    {% if perms.user.add_user %}
+      <div class="mt-8">
+        <h2 class="mb-4 text-lg">Users</h2>
+        <a href="#" class="inline-block py-2 px-6 bg-rose-600 text-white rounded-xl">Add user</a>
+
+        <div class="mt-6">
+            {% for user in users %}
+                <div class="grid grid-cols-4 py-2 {% cycle 'bg-gray-100' '' %}">
+                    <p class="px-2">
+                        {{user.name}}
+                    </p>
+                    <p class="">{{ user.email }}</p>
+                    <p>{{ user.get_role_display }}</p>
+                    <p class="px-2">
+                        <a href="#" class="underline">Edit</a>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <hr class="my-6">
+
+    <div class="mt-8">
+        <h2 class="mb-4 text-lg">Rooms</h2>
+        {% include 'chat/room_list.html' %}
+    </div>
+{% endblock %}
