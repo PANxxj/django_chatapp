@@ -51,9 +51,9 @@
 {% block scripts %}
 
     {% if room.status == 'Active' %}
-        <!-- {{ room.uuid|json_script:'room_uuid' }}
+        {{ room.uuid|json_script:'room_uuid' }}
         {{ request.user.name|json_script:'user_name' }}
-        {{ request.user.id|json_script:'user_id' }} -->
+        {{ request.user.id|json_script:'user_id' }}
  
         <script src="{% static 'js/main_admin.js' %}"></script>
     {% endif %}
